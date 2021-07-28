@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     = new Intent(MainActivity.this,
                     JoinActivity.class);
 
-            join_intent.putExtra("USER", (Parcelable) user);
+            join_intent.putExtra("USER", user);
+            startActivity(join_intent);
 
         });
 

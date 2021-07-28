@@ -28,7 +28,10 @@ public class JoinActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        UserDTO user = intent.getParcelableExtra("USER");
+        /**
+         * Serializable 된 DTO 데이터를 받기
+         */
+        UserDTO user = (UserDTO) intent.getSerializableExtra("USER");
 
         user_id.setText(user.user_id);
         password.setText(user.password);
