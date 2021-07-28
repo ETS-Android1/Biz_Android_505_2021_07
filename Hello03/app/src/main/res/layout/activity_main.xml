@@ -7,12 +7,14 @@
     android:padding="16px"
     tools:context=".MainActivity">
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toTopOf="parent">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_userid"
@@ -25,6 +27,7 @@
         android:id="@+id/layout_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/layout_1">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -38,6 +41,7 @@
         android:id="@+id/layout_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/layout_2">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -51,6 +55,7 @@
         android:id="@+id/layout_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/layout_3">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -60,5 +65,17 @@
             android:hint="주소를 입력하세요" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="저장"
+        android:padding="10px"
+        app:layout_constraintTop_toBottomOf="@id/layout_4"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
