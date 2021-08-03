@@ -21,13 +21,17 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/txt_msg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_send"
             android:layout_width="60dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@android:drawable/ic_menu_send"
+            android:backgroundTint="#FFEB3B" />
     </LinearLayout>
 
 </LinearLayout>
