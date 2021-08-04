@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Chatt chatVO = new Chatt();
                 chatVO.setMsg(msg);
-                chatVO.setName("홍길동");
+                chatVO.setName("내멋으로");
 
                 Log.d("클릭",chatVO.toString());
 
