@@ -3,7 +3,6 @@ plugins {
     // apply plugin : 'com.google.gms.google-services'
     //      부분을 아래와 같은 코드로 입력
     id 'com.google.gms.google-services'
-
 }
 
 android {

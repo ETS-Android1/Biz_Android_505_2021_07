@@ -25,6 +25,26 @@ public class ChattAdapter
     private List<Chatt> chattList;
 
     /**
+     * 외부에서 chatt 데이터 아이템을 List를 추가하고
+     * 추가된 List는 RecyclerView를 통해서
+     *      화면에 다시 그려지게 될 것이다
+     * @param chatt
+     */
+    public void addChatList(Chatt chatt) {
+
+        // 메시지를 리스트에 추가하기
+        chattList.add(chatt);
+
+        // RecyclerView에게 chattList가 변화 되었으니
+        // 다시 화면에 그려라 라고 지시하기
+        // chattList의 끝(size() - 1위치에 값이 추가 되었으니)에
+        // 값이 추가되었으니 다시 그려라
+        notifyItemInserted(chattList.size() - 1);
+
+    }
+
+
+    /**
      * RecyclerView가 화면에 그릴 데이터들을 전달받을 통로
      * @param chattList
      */

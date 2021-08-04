@@ -12,12 +12,17 @@ public class Chatt {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getMsg() {
         return msg;
     }
-
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+    @Override
+    public String toString() {
+        return "Chatt{" +
+                "name='" + name + '\'' +
+                ", msg='" + msg + '\'' +
+                '}';
     }
 }
