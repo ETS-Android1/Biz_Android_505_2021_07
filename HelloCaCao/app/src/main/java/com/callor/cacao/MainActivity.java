@@ -1,5 +1,7 @@
 package com.callor.cacao;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,6 +14,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     // firebase와 연결하는 Connection을 위한 객체 선언하기
     private DatabaseReference dbRef;
-
+    private String nickname = "익명";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
          *      한개의 전체 화면을 만드는 것
          */
         setContentView(R.layout.activity_main);
+
+        SharedPreferences preferences
+                = PreferenceManager.getDefaultSharedPreferences(this);
+        nickname = preferences.getString("nick_name",
+                "익명");
+        String alarm = preferences.getString("alarm","ON");
+        Log.d("닉네임",nickname);
+        Log.d("알람",alarm);
 
         /**
          * custom 된 toolbar를 ActionBar로 설정하기 위한 코드
@@ -76,7 +87,10 @@ public class MainActivity extends AppCompatActivity {
         // 1. Adpter 객체 생성
         // Adapter 객체를 생성할때 보여줄 데이터 객체를
         // 생성자 매개변수로 주입해 주어야 한다.
-        chattAdapter = new ChattAdapter(chattList);
+        // chattAdapter = new ChattAdapter(chattList);
+
+        // 1-1 App에 등록된 nickname을 Apdapter에 데이터와 함께 전달하기
+        chattAdapter = new ChattAdapter(chattList,nickname);
 
         // 2. RecyclerView.Adpter와 RecyclerView 를 서로 연결
         chat_list_view.setAdapter(chattAdapter);
@@ -148,10 +162,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Chatt chatVO = new Chatt();
                 chatVO.setMsg(msg);
-                chatVO.setName("내멋으로");
-
+                chatVO.setName(nickname);
                 Log.d("클릭",chatVO.toString());
-
                 // chattList.add(chatVO);
                 // firebase의 realtime DB의 table에 데이터를 inert하라
                 // push 하라
@@ -198,6 +210,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,
                     "설정메뉴 클릭됨",
                     Toast.LENGTH_SHORT).show();
+
+            Intent setting_intent
+                    = new Intent(MainActivity.this,
+                    SettingsActivity.class);
+            startActivity(setting_intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
