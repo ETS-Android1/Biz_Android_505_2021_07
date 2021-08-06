@@ -2,6 +2,7 @@ package com.callor.library;
 
 import android.os.Bundle;
 
+import com.callor.library.service.NaverAPIServiceV1;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import com.callor.library.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import lombok.SneakyThrows;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,10 +61,16 @@ public class MainActivity extends AppCompatActivity {
         // binding이 성립된 경우는 필요 없는 코드가 된다.
         // binding.fab 객체 접근하여 event등을 선언할수 있게 된다.
         binding.fab.setOnClickListener(new View.OnClickListener() {
+            @SneakyThrows
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Thread t = new Thread(new NaverAPIServiceV1("자바"));
+                t.start();
+//                NaverAPIServiceV1 ns = new NaverAPIServiceV1();
+//                ns.getNaverBooks("자바");
             }
         });
     }

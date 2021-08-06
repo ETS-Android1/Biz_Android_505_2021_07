@@ -1,13 +1,39 @@
 package com.callor.library.service;
 
+import android.util.Log;
+
 import com.callor.library.config.Naver;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.util.Collections;
 
-public class NaverAPIServiceV1 {
+import lombok.SneakyThrows;
+
+public class NaverAPIServiceV1 extends  Thread{
+
+    private String search ;
+
+    public NaverAPIServiceV1(String search) {
+        this.search = search;
+    }
+
+    @SneakyThrows
+    @Override
+    public void run() {
+        super.run();
+        this.getNaverBooks(this.search);
+    }
 
     public void getNaverBooks(String search) throws Exception {
         if(search == null) {
@@ -29,13 +55,22 @@ public class NaverAPIServiceV1 {
         // 시작
         URI apiURI = new URI(queryString);
 
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.set("X-Naver-Client-Id", Naver.CLIENT_ID);
+        requestHeaders.set("X-Naver-Client-Secret", Naver.CLIENT_SECRET);
+        requestHeaders.setAccept( Collections.singletonList(MediaType.APPLICATION_JSON ));
 
+        String active = "{'active':true}";
+//        HttpEntity<String> requestEntity = new HttpEntity<>("parameter",requestHeaders);
+        HttpEntity<String> requestEntity = new HttpEntity<>(active, requestHeaders);
 
+        // Create a new RestTemplate instance
+        RestTemplate restTemplate = new RestTemplate(); //new HttpComponentsClientHttpRequestFactory());
 
-
-
-
-
+        ResponseEntity<String> result = null;
+        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+        result = restTemplate.exchange(apiURI, HttpMethod.GET,requestEntity,String.class);
+        Log.d("Naver",result.getBody());
     }
 
 }
