@@ -25,7 +25,6 @@ public class NaverAPIServiceV1 {
         queryString = String.format(queryString,encSearch,10,1);
 
         // Network 코딩
-
         // 생성한 queryString 이용하여 Naver에 요청하기 위한
         // 시작
         URI apiURI = new URI(queryString);
