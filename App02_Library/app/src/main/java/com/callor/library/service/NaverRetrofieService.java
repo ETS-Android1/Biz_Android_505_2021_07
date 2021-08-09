@@ -30,11 +30,16 @@ import retrofit2.http.Query;
  *
  */
 
-public interface NaverRetrofieService {
+interface NaverRetrofitService {
     @GET("book.json") // Retrofit을 사용하여 GET method로 OpenAPI에 접속하라
     Call<NaverParent> getNaverBook(
             @Header("X-Naver-Client-Id") String clientId,
             @Header("X-Naver-Client-Secret") String clientSecret,
-            @Query("query") String query
+            @Query("query") String query,
+            @Query("display") int display,
+            @Query("start") int start
+
     );
+    // 최송 생성되는 queryString
+    // book.json?query=자바&display=10&start=1
 }
