@@ -2,6 +2,7 @@ package com.callor.library;
 
 import android.os.Bundle;
 
+import com.callor.library.config.Naver;
 import com.callor.library.service.NaverAPIServiceV1;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -67,10 +68,9 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                Thread t = new Thread(new NaverAPIServiceV1("자바"));
-                t.start();
-//                NaverAPIServiceV1 ns = new NaverAPIServiceV1();
-//                ns.getNaverBooks("자바");
+                NaverAPIServiceV1 naver = new NaverAPIServiceV1("자바");
+                naver.getNaverBooks("자바");
+
             }
         });
     }

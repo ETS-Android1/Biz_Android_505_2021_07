@@ -37,6 +37,21 @@
 
 * Fragment를 한마디로 정의하면 동적인 작은 Activity다 라고 할 수 있다
 
+# Retrofit 를 사용한 Apen API  핸들링
+* OpenAPI를 사용하여 다른 서버에서 제공하는 데이터를 가져와 사용하는 경우
+데이터를 수신한 후 parsing하는 과정을 거치는데
+여러 툴이 있지만 그중 안드로이드에서 많이 사용하는 툴(라이브러리)이다.
+
+* 수신되는 데이터 구조에 맞는 VO(DTO)를 만들고, 데이터를 수신한 후 자동으로 Mapping을 할수 있다
+* 데이터 수신한 후에 GSON 라이브러리를 사용하여 내부에서 자동 parsing이 이루어 진다
+
+* Retrofit을 사용하기 위하여 다음의 두가지 Dependency를 설정한다
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+* API 요청과 Mapping을 하기위한 interfac를 선언해주어야 한다
+
+
 
 
 

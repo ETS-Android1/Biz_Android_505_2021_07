@@ -3,74 +3,53 @@ package com.callor.library.service;
 import android.util.Log;
 
 import com.callor.library.config.Naver;
+import com.callor.library.model.NaverParent;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLEncoder;
-import java.util.Collections;
-
-import lombok.SneakyThrows;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NaverAPIServiceV1 extends  Thread{
 
     private String search ;
-
     public NaverAPIServiceV1(String search) {
         this.search = search;
     }
 
-    @SneakyThrows
-    @Override
-    public void run() {
-        super.run();
-        this.getNaverBooks(this.search);
-    }
-
+    // 3. 생성된 Connection을 통하여 데이터를 가져오고
+    // 필요한 데이터를 parsing하여 books 객체에 담기
     public void getNaverBooks(String search) throws Exception {
-        if(search == null) {
-            search = "자바";
-        }
-        
-        // 검색어 문자열을 UTF-8로 encoding하기
-        String encSearch = URLEncoder.encode(search,"UTF-8");
-
-        // Naver Open API에 요청할 queryString 만들기
-        String queryString = Naver.NAVER_BOOK_URL;
-        queryString += "?query=%s";
-        queryString += "&display=%d";
-        queryString += "&start=%d";
-        queryString = String.format(queryString,encSearch,10,1);
-
-        // Network 코딩
-        // 생성한 queryString 이용하여 Naver에 요청하기 위한
-        // 시작
-        URI apiURI = new URI(queryString);
-
-        HttpHeaders requestHeaders = new HttpHeaders();
-        requestHeaders.set("X-Naver-Client-Id", Naver.CLIENT_ID);
-        requestHeaders.set("X-Naver-Client-Secret", Naver.CLIENT_SECRET);
-        requestHeaders.setAccept( Collections.singletonList(MediaType.APPLICATION_JSON ));
-
-        String active = "{'active':true}";
-//        HttpEntity<String> requestEntity = new HttpEntity<>("parameter",requestHeaders);
-        HttpEntity<String> requestEntity = new HttpEntity<>(active, requestHeaders);
-
-        // Create a new RestTemplate instance
-        RestTemplate restTemplate = new RestTemplate(); //new HttpComponentsClientHttpRequestFactory());
-
-        ResponseEntity<String> result = null;
-        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        result = restTemplate.exchange(apiURI, HttpMethod.GET,requestEntity,String.class);
-        Log.d("Naver",result.getBody());
+        Call<NaverParent> books = NaverAPIServiceV1.getNaverBooks()
+                .getNaverBook(Naver.CLIENT_ID,Naver.CLIENT_SECRET,this.search);
+        Log.d("Naver Books", books.toString());
     }
+
+    // 2. 미리 만들어둔 NaverRetrofitService interface와 연동하여
+    // 데이터를 parsing하는 코드를 생성하여 return
+    public static NaverRetrofieService getNaverBooks() {
+        return getInstance().create(NaverRetrofieService.class);
+    }
+
+    // 1. OpenAPI와 연결할 Connection 객체를 생성하고
+    public static Retrofit getInstance() {
+
+        // Retrofit으로 OpenAPI로 데이터를 가져오면
+        // 자동 parsing을 도와줄 객체
+        Gson gson = new GsonBuilder()
+                    .setLenient().create();
+
+        // Naver.NAVER_BOOK_URL 과 연결하는
+        // HTTP Connection을 하나 설정하고
+        // 객체를 만들어라
+        Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(Naver.NAVER_BOOK_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+        return retrofit;
+    }
+
+
 
 }
