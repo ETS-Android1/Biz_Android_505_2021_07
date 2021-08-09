@@ -1,12 +1,17 @@
 package com.callor.library.apdapter;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.text.Html;
+import android.text.Spannable;
 import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.callor.library.databinding.BookItemViewBinding;
@@ -39,7 +44,29 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         BookViewHolder bookHolder = (BookViewHolder) holder;
         BookDTO bookDTO = bookList.get(position);
-        bookHolder.bookItemView.itemTxtTitle.setText( bookDTO.getTitle() );
+
+        TextView txt_title = bookHolder.bookItemView.itemTxtTitle;
+        /**
+         * HtmpCompat.fromHtml()
+         * 문자열 내에 HTML tag가 포함되어 있으면
+         * tag 의 효과를 적용하여 문자열을 화면에 그리기 위한 변환 method
+         * Nougat(7.0) 이상에서만 작동되는 method
+         * Nougat 이하에서는 원래는 작동되었는데 최근 Android에서는 제거되었다
+          */
+        String strTitle = "<font color=blue>" + bookDTO.getTitle() + "</font>";
+        strTitle = "<span style='color:#0000FF'>";
+        strTitle  += bookDTO.getTitle() + "</span>";
+        txt_title.setText(
+                HtmlCompat.fromHtml(
+                        strTitle,HtmlCompat.FROM_HTML_MODE_LEGACY ));
+
+        /*
+        Spannable span
+                = (Spannable) txt_title.getText();
+        span.setSpan(new ForegroundColorSpan(Color.BLUE),
+                0,txt_title.getText().length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        */
     }
     @Override
     public int getItemCount() {

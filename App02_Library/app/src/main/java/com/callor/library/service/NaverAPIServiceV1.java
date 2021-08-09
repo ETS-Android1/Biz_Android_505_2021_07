@@ -43,7 +43,7 @@ public class NaverAPIServiceV1 {
                         Naver.CLIENT_ID,
                         Naver.CLIENT_SECRET,
                         search,
-                        10,
+                        50,
                         1);
         /**
          * Retrofit 은 API요청을 비동기 방식으로 수행을 한다
