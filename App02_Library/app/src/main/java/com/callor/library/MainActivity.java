@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                NaverAPIServiceV1 naver = new NaverAPIServiceV1();
-                naver.getNaverBooks("자바");
+//                NaverAPIServiceV1 naver = new NaverAPIServiceV1();
+//                naver.getNaverBooks("자바");
 
             }
         });
