@@ -2,6 +2,7 @@ package com.callor.library.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,9 @@ public class BookViewAdapter extends RecyclerView.Adapter {
      * item.xml 파일을 view로 생성하고 데이터와 연결할 준비
      */
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+
+
         return null;
     }
 
