@@ -11,7 +11,6 @@ import com.callor.library.service.impl.NaverBookServiceImplV1;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
