@@ -22,7 +22,6 @@ public class FirstFragment extends Fragment {
     // fragment_first.xml 을 Binding하라 라는 의미가 된다.
     // *.xml 파일이 마치 java class가 된것 처럼 코딩을 할수 있다
     private FragmentFirstBinding binding;
-
     private BookAdapter bookAdapter;
     private List<BookDTO> bookDTOList;
 
