@@ -15,11 +15,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.book_list_view);
-
         NaverBookService naverBookService
-                = new NaverBookServiceImplV1();
+                = new NaverBookServiceImplV1(recyclerView);
         naverBookService.getBooks("자바");
     }
 }
