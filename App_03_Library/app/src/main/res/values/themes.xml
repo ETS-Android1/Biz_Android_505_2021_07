@@ -13,4 +13,20 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- 기본 화면에서 Actionbar를 보이지 않도록 하기 위한 Theme를 선언하기 -->
+    <style name="Theme.내도서관2.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- 새로 만들 ActionBar를 위한 Theme 선언하기 -->
+    <!-- 기존에 Android에서 제공하는 Theme 일부를 상속 받아서 사용하기 -->
+    <style name="Theme.내도서관2.AppBarOverlay"
+            parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.내도서관2.PopupOverLay"
+        parent="ThemeOverlay.AppCompat.Light"/>
+
+
+
 </resources>
