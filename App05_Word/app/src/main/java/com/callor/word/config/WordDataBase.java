@@ -34,7 +34,7 @@ import java.util.concurrent.ExecutorService;
  * 그리고, version 넘버를 현재 값보다 큰값으로 변경한다
  * 변경된 version 넘버를 기준으로 새롭게 table을 재 구성한다
   */
-@Database(entities = {WordDTO.class},version = 1)
+@Database(entities = {WordDTO.class},version = 1,exportSchema = false)
 public abstract class WordDataBase extends RoomDatabase {
     static WordDataBase dbConn;
     // 데이터 관련 코드에서 사용할 DB Connection(Session) 객체를

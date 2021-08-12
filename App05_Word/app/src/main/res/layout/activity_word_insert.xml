@@ -7,21 +7,31 @@
     android:orientation="vertical"
     tools:context=".WordInsertActivity">
 
-    <EditText
-        android:id="@+id/txt_word"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_word"
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="영어단어" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@id/txt_korea"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="영어 단어를 입력해 주세요" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_korea"
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="한글뜻" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_korea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="영단어 한글 풀이 입력" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_save"
