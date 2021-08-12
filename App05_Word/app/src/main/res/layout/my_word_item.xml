@@ -8,5 +8,16 @@
         android:id="@+id/item_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#0000FF"
+        android:textStyle="bold"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/item_korea"
+        android:textAlignment="textEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
 </LinearLayout>
