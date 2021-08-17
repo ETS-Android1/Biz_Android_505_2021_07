@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.callor.movie.databinding.FragmentSecondBinding;
+import com.callor.movie.service.NaverAPIService;
+import com.callor.movie.service.impl.NaverMovieServiceImplV1;
 
 public class SecondFragment extends Fragment {
 
@@ -38,8 +40,9 @@ public class SecondFragment extends Fragment {
             String movie_text = getArguments()
                     .getString("movie_search","없음");
             Log.d("검색문자열",movie_text);
-
-
+            NaverAPIService naverAPIService
+                    = new NaverMovieServiceImplV1();
+            naverAPIService.getNaverMovie(movie_text);
         }
         return binding.getRoot();
 
