@@ -45,7 +45,6 @@ public class SecondFragment extends Fragment {
             naverAPIService.getNaverMovie(movie_text);
         }
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
