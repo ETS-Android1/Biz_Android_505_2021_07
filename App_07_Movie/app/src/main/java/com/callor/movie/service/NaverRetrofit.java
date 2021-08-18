@@ -15,5 +15,5 @@ public interface NaverRetrofit {
             @Query("query") String query,
             @Query("start") int start,
             @Query("display") int display
-    ) ;
+    );
 }

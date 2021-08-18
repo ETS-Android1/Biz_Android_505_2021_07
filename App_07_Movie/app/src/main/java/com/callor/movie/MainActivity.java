@@ -53,12 +53,23 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
+        // menu_main.xml 에 item으로 설정된 항목중에서
+        // SearchView 클래스가 지정된 item을 가져와서
+        // searchView 객체로 생성하기
         SearchView searchView
-                = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+                = (SearchView) menu
+                                .findItem(R.id.app_bar_search)
+                                .getActionView();
         
         searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setQueryHint("영화명 검색");
 
+        // 검색창에 검색어를 입력하고
+        // 키보드의 검색(search icon)을 클릭했을때
+        // 반응하는 event 핸들러
+
+        // 검색창에 문자열을 입력할때, 검색을 클릭했을때
+        // 반응하는 event
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -82,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
                             = Navigation.findNavController(
                             MainActivity.this,
                             R.id.nav_host_fragment_content_main);
+
+                    // 열려있는 Search 창을 닫는 method
+                    menu.findItem(R.id.app_bar_search)
+                            .collapseActionView();
 
                     // 만약 firgragment 화면이 아닌경우
                     // SendFragment화면이 열려 있는 상태이면

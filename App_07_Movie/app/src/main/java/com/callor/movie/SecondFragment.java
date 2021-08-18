@@ -35,7 +35,6 @@ private FragmentSecondBinding binding;
                   = getArguments().getString("movie_search","");
           Log.d("movie_searh",movie_search);
 
-
           NaverApiService naverApiService
                   = new NaverMovieServiceImplV1(binding.movieListView);
           naverApiService.getNaverData(movie_search);
