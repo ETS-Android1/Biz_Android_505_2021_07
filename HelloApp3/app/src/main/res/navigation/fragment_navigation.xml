@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_navigation"
-    app:startDestination="@+id/botton_nav_home" >
+    app:startDestination="@+id/bottom_nav_home" >
 
-    <fragment android:id="@+id/botton_nav_home"
+    <fragment android:id="@+id/bottom_nav_home"
         android:name="com.callor.hello.FirstFragment" />
-    <fragment android:id="@+id/botton_nav_book"
+    <fragment android:id="@+id/bottom_nav_book"
         android:name="com.callor.hello.OldFragment"/>
 </navigation>
