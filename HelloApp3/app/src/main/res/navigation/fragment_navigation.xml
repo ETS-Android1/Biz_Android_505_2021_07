@@ -5,7 +5,9 @@
     app:startDestination="@+id/bottom_nav_home" >
 
     <fragment android:id="@+id/bottom_nav_home"
-        android:name="com.callor.hello.FirstFragment" />
+        android:name="com.callor.hello.FirstFragment"
+        android:label="@string/home"/>
     <fragment android:id="@+id/bottom_nav_book"
+        android:label="@string/library"
         android:name="com.callor.hello.OldFragment"/>
 </navigation>

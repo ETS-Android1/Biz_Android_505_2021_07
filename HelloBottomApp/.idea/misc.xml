@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/bizworks/AndProject/HelloApp3/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/bizworks/AndProject/HelloApp3/app/src/main/res/layout/fragment_first.xml" value="0.14239075841285787" />
-        <entry key="..\:/bizworks/AndProject/HelloApp3/app/src/main/res/menu/bottom_nav.xml" value="0.1" />
+        <entry key="..\:/bizworks/AndProject/HelloBottomApp/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.14351851851851852" />
+        <entry key="..\:/bizworks/AndProject/HelloBottomApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/bizworks/AndProject/HelloBottomApp/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/bizworks/AndProject/HelloBottomApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
