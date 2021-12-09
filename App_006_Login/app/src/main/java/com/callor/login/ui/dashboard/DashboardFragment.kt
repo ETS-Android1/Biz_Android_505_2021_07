@@ -10,8 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.callor.login.R
 import com.callor.login.databinding.FragmentDashboardBinding
+import com.callor.login.ui.AuthFragmentParents
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : AuthFragmentParents() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentDashboardBinding? = null

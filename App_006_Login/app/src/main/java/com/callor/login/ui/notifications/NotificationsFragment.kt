@@ -10,8 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.callor.login.R
 import com.callor.login.databinding.FragmentNotificationsBinding
+import com.callor.login.ui.AuthFragmentParents
 
-class NotificationsFragment : Fragment() {
+class NotificationsFragment : AuthFragmentParents() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var _binding: FragmentNotificationsBinding? = null

@@ -9,7 +9,7 @@ import com.callor.login.data.Result
 
 import com.callor.login.R
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -17,13 +17,16 @@ class LoginViewModel : ViewModel() {
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    // loginViewModel 의 loginResult 객체에
-    //  success 객체를 추가하고 success 객체에 userid 와 displayName 을 저장해 놓겠다
-    // loginResult.value.success.userId,
-    // loginResult.value.success.displayName,
     fun login(username: String, password: String) {
-         _loginResult.value =
-            LoginResult(success = LoggedInUserView(displayName = "홍길동", userId = username))
+        // can be launched in a separate asynchronous job
+        val result = loginRepository.login(username, password)
+
+        if (result is Result.Success) {
+            _loginResult.value =
+                LoginResult(success = LoggedInUserView(displayName = result.data.displayName, userId = result.data.userId))
+        } else {
+            _loginResult.value = LoginResult(error = R.string.login_failed)
+        }
     }
 
     fun loginDataChanged(username: String, password: String) {
