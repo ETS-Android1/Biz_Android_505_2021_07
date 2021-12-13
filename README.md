@@ -16,8 +16,26 @@
             start()
         }
 
+        // 알파값 조정으로 fade out 구현하기
+        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ALPHA, 1f,0f).apply {
+            duration = 2000
+            start()
+        }
+
         // View 가 회전하면서 돌아오기
         ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ROTATION, 180f,0f).apply {
+            duration = 2000
+            start()
+        }
+
+        // View 가 위에서 아래로 회전하면서 돌아오기
+        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ROTATION_X, 180f,0f).apply {
+            duration = 2000
+            start()
+        }
+
+        // View 가 좌우로 회전하면서 돌아오기
+        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ROTATION_Y, 180f,0f).apply {
             duration = 2000
             start()
         }
@@ -27,6 +45,13 @@
             duration = 2000
             start()
         }
+
+        // Y 축으로 줄이고 늘리기 
+        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.SCALE_Y, 0.5f,5f,1f,0.5f,2.0f,1.0f).apply {
+            duration = 2000
+            start()
+        }
+
 
     }
 
