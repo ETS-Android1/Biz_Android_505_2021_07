@@ -11,31 +11,31 @@
         super.onResume()
 
         // 알파값 조정으로 fade in 구현하기
-        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ALPHA, 0f,1f).apply {
+        ObjectAnimator.ofFloat(this.binding.textView, View.ALPHA, 0f,1f).apply {
             duration = 2000
             start()
         }
 
         // 알파값 조정으로 fade out 구현하기
-        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ALPHA, 1f,0f).apply {
+        ObjectAnimator.ofFloat(this.binding.textView, View.ALPHA, 1f,0f).apply {
             duration = 2000
             start()
         }
 
         // View 가 회전하면서 돌아오기
-        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ROTATION, 180f,0f).apply {
+        ObjectAnimator.ofFloat(this.binding.textView, View.ROTATION, 180f,0f).apply {
             duration = 2000
             start()
         }
 
         // View 가 위에서 아래로 회전하면서 돌아오기
-        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ROTATION_X, 180f,0f).apply {
+        ObjectAnimator.ofFloat(this.binding.textView, View.ROTATION_X, 180f,0f).apply {
             duration = 2000
             start()
         }
 
         // View 가 좌우로 회전하면서 돌아오기
-        ObjectAnimator.ofFloat(this.binding.fullscreenContent, View.ROTATION_Y, 180f,0f).apply {
+        ObjectAnimator.ofFloat(this.binding.textView, View.ROTATION_Y, 180f,0f).apply {
             duration = 2000
             start()
         }
