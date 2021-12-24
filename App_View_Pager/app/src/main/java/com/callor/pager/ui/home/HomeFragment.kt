@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.callor.pager.MainActivity
 import com.callor.pager.adapter.ViewPagerAdapter
 import com.callor.pager.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -20,7 +21,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val tabLayout = binding.tabLayout
